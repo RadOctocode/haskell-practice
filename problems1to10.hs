@@ -4,6 +4,14 @@ myLast [x] = x
 myLast (_:xs) = myLast xs
 
 myNextToLast :: [a] -> a
-myNextToLast [] = error "empty list!"
-myNextToLast [x] = error "list with one element" 
-myNextToLast (_:xs) = myNextToLast xs
+myNextToLast = last . init
+-- init returns list w/o last item
+--last takes the last part 
+-- . function composition
+
+isPalindrome :: String -> Bool
+isPalindrome s1
+	| s1 == rs2 = True
+	| otherwise = False
+	where rs2 = reverse s1
+	--use where to 
