@@ -72,11 +72,12 @@ cylinder r h =
     in  sideArea + 2 * topArea 
     --let <bindings> in <expression>
 
-maximum' :: (Ord a) => [a] -> a  
-maximum' [] = error "maximum of empty list"  
-maximum' [x] = x  
+maximum' :: (Ord a) => [a] -> a  --a is an ordered data type it takes a list of ordered data types and returns one of them
+maximum' [] = error "maximum of empty list"  --cant call max on empty list 
+maximum' [x] = x  --the max of a single elemental list is that single element
 maximum' (x:xs)
 --for every other case let x = the beginning of the list   
-    | x > maxTail = x --if 
+    | x > maxTail = x --if x is bigger then maxtail then respond with x
     | otherwise = maxTail  
-    where maxTail = maximum' xs  
+    where maxTail = maximum' xs  --recursion happens here
+

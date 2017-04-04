@@ -1,3 +1,5 @@
+data NestedList a = Elem a | List [NestedList a]
+
 myLast :: [a] -> a --do not add spaces they will assume you need a let
 myLast [] = error "empty list!"
 myLast [x] = x
@@ -9,9 +11,19 @@ myNextToLast = last . init
 --last takes the last part 
 -- . function composition
 
-isPalindrome :: String -> Bool
-isPalindrome s1
+myIndex :: [a] -> Int -> a
+myIndex list i = list!!(i-1) --list is the name of the list and i is the name of the int
+
+myReverse :: [a] -> [a]
+myReverse list = reverse list
+
+myLength :: [a] -> Int
+myLength list = length list 
+
+myAnyKindPal :: (Eq a) => [a] -> Bool--
+myAnyKindPal s1
 	| s1 == rs2 = True
 	| otherwise = False
 	where rs2 = reverse s1
-	--use where to 
+
+myFlatten :: (NestedList a) => [a]
