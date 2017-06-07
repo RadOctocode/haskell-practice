@@ -26,4 +26,13 @@ myAnyKindPal s1
 	| otherwise = False
 	where rs2 = reverse s1
 
-myFlatten :: (NestedList a) => [a]
+--myFlatten :: (NestedList a) => [a]
+--myFlatten [] = []
+--myFlatten [x] = [x]
+--myFlatten
+--
+
+myCompress :: [a] -> [b]
+myCompress [] = []
+myCompress [x,x] = [x]
+myCompress(_:xs) = myCompress xs
