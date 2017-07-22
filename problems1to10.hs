@@ -1,4 +1,6 @@
-data NestedList a = Elem a | List [NestedList a]
+data NestedList a = Elem a | List [NestedList a] deriving Show
+--[Elem 1, List [Elem 2]]
+
 
 myLast :: [a] -> a --do not add spaces they will assume you need a let
 myLast [] = error "empty list!"
@@ -26,13 +28,8 @@ myAnyKindPal s1
 	| otherwise = False
 	where rs2 = reverse s1
 
---myFlatten :: (NestedList a) => [a]
---myFlatten [] = []
---myFlatten [x] = [x]
---myFlatten
---
+myFlatten :: NestedList a -> [a]
+myFlatten x = case x of
+                   -- List [b] -> myFlatten b
+                    [Elem b] -> [b]
 
-myCompress :: [a] -> [b]
-myCompress [] = []
-myCompress [x,x] = [x]
-myCompress(_:xs) = myCompress xs
