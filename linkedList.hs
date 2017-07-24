@@ -30,7 +30,9 @@ removeNode x y = case y of
 						|a == x -> b
 						|otherwise -> Cons a (removeNode x b)
 
-addNodeHead:: Node a -> Node a -> Node a
+addNodeHead:: a -> Node a -> Node a
 addNodeHead Null y = error "you cant add an empty value"
-addNodeHead x Null = x
-addNodeHead x y =
+addNodeHead x Null = Cons x Null
+addNodeHead x y = case y of 
+					Cons a b -> Cons x (addNodeHead a b)
+					Cons a Null -> Cons x (Cons a (Null))
