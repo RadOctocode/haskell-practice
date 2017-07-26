@@ -5,9 +5,8 @@ emptyBin x = False
 
 insert :: Ord a => a -> Node a -> Node a
 insert a Null = Cons a (Null) (Null)
-insert a b = case b of
-					Cons x y z 
-						| a > x -> Cons x (y) (insert a z)
-						| a < x -> Cons x (insert a y) (z)
-						| a == x -> error "you cant put in the same value"
+insert a (Cons x y z) 
+		| a > x = Cons x (y) (insert a z)
+		| a < x = Cons x (insert a y) (z)
+		| a == x = error "you cant put in the same value"
 
