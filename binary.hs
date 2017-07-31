@@ -11,7 +11,13 @@ insert a (Cons x y z)
 		| a == x = error "you cant put in the same value"
 
 remove :: Ord a => a -> Node a -> Node a
-remove x y = 
+remove x (Cons a (Null) (Null))
+    |a == x = Null
+    |otherwise = (Cons a (Null) (Null))
+remove x (Cons a (Null) (b))
+    |a == x = b
+    |otherwise = (Cons a (Null) (b))
+remove x ()
 remove x Null = Null
 
 
