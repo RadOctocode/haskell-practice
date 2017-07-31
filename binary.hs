@@ -10,3 +10,9 @@ insert a (Cons x y z)
 		| a < x = Cons x (insert a y) (z)
 		| a == x = error "you cant put in the same value"
 
+remove :: Ord a => a -> Node a -> Node a
+remove x y = 
+remove x Null = Null
+
+
+
