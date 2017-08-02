@@ -42,4 +42,9 @@ remove x (Cons a (b) (c))
 remove x Null = Null
 
 
-
+inOrder :: Ord a => Node a -> [a]
+inOrder (Cons a (Null) (Null)) = [a] 
+inOrder (Cons a (b) (c))= inOrder b ++ [a] ++ inOrder c
+inOrder (Cons a (b) (Null))=[a] ++ inOrder b
+inOrder (Cons a (Null) (c))=[a] ++ inOrder c
+inOrder Null = error "theres no order"
