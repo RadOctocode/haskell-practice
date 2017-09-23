@@ -1,5 +1,5 @@
 data NestedList a = Elem a | List [NestedList a] deriving Show
---[Elem 1, List [Elem 2]]
+--List[Elem 1, List [Elem 2]]
 
 
 myLast :: [a] -> a --do not add spaces they will assume you need a let
@@ -29,7 +29,23 @@ myAnyKindPal s1
 	where rs2 = reverse s1
 
 myFlatten :: NestedList a -> [a]
-myFlatten x = case x of
-                   -- List [b] -> myFlatten b
-                    [Elem b] -> [b]
+myFlatten (Elem z) = [z]
+myFlatten (List (z:zs)) = myFlatten z ++ myFlatten (List zs)
+--must use ++ instead of : otherwise it will throw a type error
+myFlatten (List []) = []
 
+
+myCompress :: String -> String
+--type declaration for this cannot be String a -> String a because String is not a typeclass
+--go through string if the next element is the same as this one then get rid of this pop this element
+myCompress "" = ""
+myCompress (x:y:xs)
+    |x==y = myCompress(y:xs)  --edit me
+    |otherwise = [x] ++myCompress(y:xs)
+myCompress [a] = [a]
+
+myPack :: Eq a => [a]->[[a]]
+myPack [] = []
+myPack (x:y:xs)
+    | x==y
+    | otherwise
