@@ -19,15 +19,14 @@ check "ROCK" x
 
 check y x = "THIS IS BAD INPUT HOW DARE YOU"
 
-
-
+--play :: String -> maybe bool
+--play x
+--    | x=="YES" = True
+--    | x=="NO" = False
+--    otherwise nothing
       
 main = forever $ do  
     l <- getLine 
     g <- getLine
-    let strl = show(l)
-    let strg = show(g)
-    --putStrLn l
-    --putStrLn ("" ++ show (g)) 
-    putStrLn(check strl strg)
-    print (strl=="ROCK")
+    putStrLn(check l g)
+

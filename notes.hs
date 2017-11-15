@@ -5,8 +5,6 @@ boomBangs xs = [if x `mod` 3==0 && x `mod` 5==0 then "boombang"
 				 else
 				  if x `mod` 3==0 then "boom"
 				 else show x
-				 | x <- xs]  
-
 sayMe :: (Integral a) => a -> String
 --integral is a typeclass 
 sayMe 1 = "One!"  
@@ -80,4 +78,13 @@ maximum' (x:xs)
     | x > maxTail = x --if x is bigger then maxtail then respond with x
     | otherwise = maxTail  
     where maxTail = maximum' xs  --recursion happens here
+
+
+minimum::(Ord a)=> [a]-> a
+minimum' [] = error "min of empty list"
+minimum' [x] = x
+minimum' (x:xs)
+    |x < minTail = x
+    | otherwise = minTail
+    where minTail = minimum' xs
 

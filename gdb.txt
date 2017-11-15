@@ -1,0 +1,26 @@
+Dump of assembler code for function main:
+   0x0000000000406169 <+0>:	push   %rbp
+   0x000000000040616a <+1>:	mov    %rsp,%rbp
+   0x000000000040616d <+4>:	sub    $0x30,%rsp
+   0x0000000000406171 <+8>:	mov    %edi,-0x24(%rbp)
+   0x0000000000406174 <+11>:	mov    %rsi,-0x30(%rbp)
+   0x0000000000406178 <+15>:	mov    0xa3d41(%rip),%rax        # 0x4a9ec0 <defaultRtsConfig>
+   0x000000000040617f <+22>:	mov    %rax,-0x20(%rbp)
+   0x0000000000406183 <+26>:	mov    0xa3d3e(%rip),%rax        # 0x4a9ec8 <defaultRtsConfig+8>
+   0x000000000040618a <+33>:	mov    %rax,-0x18(%rbp)
+   0x000000000040618e <+37>:	mov    0xa3d3b(%rip),%rax        # 0x4a9ed0 <defaultRtsConfig+16>
+   0x0000000000406195 <+44>:	mov    %rax,-0x10(%rbp)
+   0x0000000000406199 <+48>:	movl   $0x1,-0x20(%rbp)
+   0x00000000004061a0 <+55>:	movq   $0x1,-0x10(%rbp)
+   0x00000000004061a8 <+63>:	mov    -0x30(%rbp),%rcx
+   0x00000000004061ac <+67>:	mov    -0x24(%rbp),%eax
+   0x00000000004061af <+70>:	sub    $0x8,%rsp
+   0x00000000004061b3 <+74>:	pushq  -0x10(%rbp)
+   0x00000000004061b6 <+77>:	pushq  -0x18(%rbp)
+   0x00000000004061b9 <+80>:	pushq  -0x20(%rbp)
+   0x00000000004061bc <+83>:	mov    $0x6c0410,%edx
+   0x00000000004061c1 <+88>:	mov    %rcx,%rsi
+   0x00000000004061c4 <+91>:	mov    %eax,%edi
+   0x00000000004061c6 <+93>:	callq  0x476210 <hs_main>
+End of assembler dump.
+No symbol table is loaded.  Use the "file" command.

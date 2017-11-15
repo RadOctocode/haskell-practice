@@ -1,0 +1,57 @@
+myMap:: (a->b)->[a]->[b]
+myMap f []=[] --if called on an empty list return the empty list
+myMap f(x:xs)= f x: myMap f xs --f is calling the fucntion
+
+fold
+1->start at beginning
+r->start at end
+1->use first element as accumulators
+
+ex1: 
+foldl1 (+) [1,2,3] = 6 bc it folds list using the + operation and uses r=the first element as an accumultor
+
+ex2:
+foldl (+) 0 [1,2,3] =6 but it uses 0 as a starting value instead of 1
+
+function currying
+-all functions in haskell can return anything like another function
++ :: a->(a->a) takes a parameter and returns a function that is a->a
+
+foldl: (b->a->b)->(b->([a]->b))
+
+disadvantage to using foldl1 or foldr1
+-throws an exception of empty list
+-non strict function
+-strict defined for all possible arguements therefore nonstrict has the exterme ability to fail 
+pattern matching is preferable to using nonstrict things
+
+. function compasition
+(.)::(b->c)->(a->b)->(a->c) 
+
+/-floating point
+div-integer division
+
+(map.foldl1)(-)[[1,2,3][3,2,1][100,200,300]]
+foldl1::(b->a->b)->[a]->b
+map::(x->y)->[x]->[y]
+(.)::(s->t)->(r->s)->(r->t)
+
+r::b->a->b
+s::[a]->b=(x->y)
+t::[x]->[y]
+
+map.foldl1::(b->a->b)->([[a]]->[b])
+
+$ lowest operator precesdence it just creates space?
+(+1)$1==(+1)1
+it's really just used as like a wait symbol
+
+uncurry map((+1),[1,2,3])
+
+map::(x->y)->[x]->[y]
+uncurry::(a->b->c)->(a,b)->c --unification
+a=x->y
+b=[x]
+c=[y]
+uncurry map::(((x->y),[x])->[y])
+

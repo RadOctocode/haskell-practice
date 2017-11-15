@@ -46,6 +46,7 @@ myCompress [a] = [a]
 
 myPack :: Eq a => [a]->[[a]]
 myPack [] = []
+myPack [x]= [[x]]
 myPack (x:y:xs)
-    | x==y
-    | otherwise
+    | x==y = [[x] ++ [y]] ++ myPack(xs)
+    | otherwise = [[x],[y]]++myPack(xs) 
