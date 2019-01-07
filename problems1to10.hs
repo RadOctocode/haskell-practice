@@ -24,9 +24,9 @@ myLength list = length list
 
 myAnyKindPal :: (Eq a) => [a] -> Bool--
 myAnyKindPal s1
-	| s1 == rs2 = True
-	| otherwise = False
-	where rs2 = reverse s1
+    | s1 == rs2 = True
+    | otherwise = False
+    where rs2 = reverse s1
 
 myFlatten :: NestedList a -> [a]
 myFlatten (Elem z) = [z]
@@ -44,9 +44,33 @@ myCompress (x:y:xs)
     |otherwise = [x] ++myCompress(y:xs)
 myCompress [a] = [a]
 
-myPack :: Eq a => [a]->[[a]]
+myPack :: Eq a => [a] -> [[a]]
 myPack [] = []
-myPack [x]= [[x]]
-myPack (x:y:xs)
-    | x==y = [[x] ++ [y]] ++ myPack(xs)
-    | otherwise = [[x],[y]]++myPack(xs) 
+myPack (x:xs) = pack' x [x] xs 
+
+pack' :: Eq a => a -> [a] -> [a] -> [[a]]
+pack' a b [] = [b]
+pack' a b (x:xs) 
+    |a==x =  pack' a (b++[x]) xs 
+    |otherwise = (b : pack' x [x] xs)
+
+
+myPackC :: Eq a => [a] -> [(Int,a)]
+myPackC [] = []
+myPackC (x:xs) = packc' x 1 xs
+
+packc' :: Eq a => a -> Int -> [a] -> [(Int,a)]
+packc' a b [] = [(b,a)]
+packc' a b (x:xs) 
+    |a==x =  packc' a (b+1) xs 
+    |otherwise = ((b,a) : packc' x 1 xs)
+
+--myAnnotate :: Eq a =>[a] -> [(Int,a)]
+--myAnnotate []=[]
+--myAnnotate (x:xs) = [(1,x)] ++ myAnnotate xs
+
+--myCount :: Eq a => [(Int,a)] -> [(Int,a)]
+--myCount [] = []
+--myCount ((x,a):(y,b):xs)
+--    | a==b = [(x+y,a)] ++ myCount ((x+y,a):xs) 
+--    | otherwise = [(x,a),(y,b)] ++ myCount (xs)
