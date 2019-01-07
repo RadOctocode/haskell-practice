@@ -44,6 +44,8 @@ myCompress (x:y:xs)
     |otherwise = [x] ++myCompress(y:xs)
 myCompress [a] = [a]
 
+
+--pack up ask strings
 myPack :: Eq a => [a] -> [[a]]
 myPack [] = []
 myPack (x:xs) = pack' x [x] xs 
@@ -54,7 +56,7 @@ pack' a b (x:xs)
     |a==x =  pack' a (b++[x]) xs 
     |otherwise = (b : pack' x [x] xs)
 
-
+--pack up into units with numbers
 myPackC :: Eq a => [a] -> [(Int,a)]
 myPackC [] = []
 myPackC (x:xs) = packc' x 1 xs
@@ -65,12 +67,3 @@ packc' a b (x:xs)
     |a==x =  packc' a (b+1) xs 
     |otherwise = ((b,a) : packc' x 1 xs)
 
---myAnnotate :: Eq a =>[a] -> [(Int,a)]
---myAnnotate []=[]
---myAnnotate (x:xs) = [(1,x)] ++ myAnnotate xs
-
---myCount :: Eq a => [(Int,a)] -> [(Int,a)]
---myCount [] = []
---myCount ((x,a):(y,b):xs)
---    | a==b = [(x+y,a)] ++ myCount ((x+y,a):xs) 
---    | otherwise = [(x,a),(y,b)] ++ myCount (xs)
