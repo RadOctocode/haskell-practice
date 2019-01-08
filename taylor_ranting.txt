@@ -1,0 +1,3 @@
+monoids - describe a binary operation on a set (with properties)
+	binary operation that is associative over a set
+	identity element in the set exists 
