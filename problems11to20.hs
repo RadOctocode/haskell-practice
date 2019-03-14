@@ -39,8 +39,19 @@ drop' (x:xs) b c
     | b==c = drop' xs b 1
     | otherwise = [x] ++ drop' xs b (c+1)
 
+mySplit :: [a] -> Int -> [[a]]
+mySplit a b = let k = take b a
+                  in [k,diff a b]
 
+diff :: [a] -> Int -> [a]
+diff [] y  = []
+diff (x:xs) y
+   | y==0 = (x:xs)
+   | otherwise = diff xs (y - 1)
 
-
-
-
+mySlice :: [a] -> Int -> Int -> [a]
+mySlice [] a b = []
+mySlice x y z
+   |z == length x && y == 0 = x
+   |y > 0 = mySlice (take )
+   |
