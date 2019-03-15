@@ -50,8 +50,21 @@ diff (x:xs) y
    | otherwise = diff xs (y - 1)
 
 mySlice :: [a] -> Int -> Int -> [a]
-mySlice [] a b = []
-mySlice x y z
-   |z == length x && y == 0 = x
-   |y > 0 = mySlice (take )
-   |
+mySlice x y z = drop y . take z $ x
+
+myRotate :: [a] -> Int -> [a]
+myRotate a b
+   | c > 0 = turnRight a c
+   | c < 0 = turnLeft a c
+   | c == 0 = a 
+   where
+     c = b % length $ a
+turnLeft :: [a] -> Int -> [a]
+turnLeft a 0 = a
+turnLeft a b = turnLeft tail a ++ head a (b - 1)
+
+
+turnRight :: [a] -> Int -> [a]
+turnRight a 0 = a
+turnRight a b = a
+
