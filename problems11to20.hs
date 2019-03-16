@@ -54,17 +54,27 @@ mySlice x y z = drop y . take z $ x
 
 myRotate :: [a] -> Int -> [a]
 myRotate a b
-   | c > 0 = turnRight a c
-   | c < 0 = turnLeft a c
-   | c == 0 = a 
+   | b < 0 = turnRight a b
+   | b > 0 = turnLeft a b
+   | b == 0 = a 
    where
-     c = b % length $ a
-turnLeft :: [a] -> Int -> [a]
-turnLeft a 0 = a
-turnLeft a b = turnLeft tail a ++ head a (b - 1)
-
+     c = length a
 
 turnRight :: [a] -> Int -> [a]
 turnRight a 0 = a
-turnRight a b = a
+turnRight a b =
+    let y = tail a ++ [head a]
+        z = b + 1
+        in turnRight y z
 
+
+turnLeft :: [a] -> Int -> [a]
+turnLeft a 0 = a
+turnLeft a b =
+   let y = [last a] ++ take (length a - 1) a
+       z = b - 1
+       in turnLeft y z
+
+myRemove :: [a] -> Int -> [[a]]
+myRemove a 0 = [[head a],tail a]
+myRemove a b = [[last (take a b)] , drop a b 1]
